@@ -1,0 +1,1071 @@
+{
+	"compiler": {
+		"version": "0.8.9+commit.e5eed63a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "int64",
+						"name": "_fee",
+						"type": "int64"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "CryptoTransferFailed",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "EnforcedPause",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "ExpectedPause",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "GetTokenCustomFeesFailed",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "GetTokenTypeFailed",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "SingleAssociationFailed",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "TokenTransferFailed",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "int64",
+						"name": "endOfExemptionTimestamp",
+						"type": "int64"
+					}
+				],
+				"name": "AccountExempt",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "ExemptionRevoked",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "int64",
+						"name": "newFee",
+						"type": "int64"
+					}
+				],
+				"name": "FeeAmountUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "int64",
+						"name": "amount",
+						"type": "int64"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "davinciAddress",
+						"type": "address"
+					}
+				],
+				"name": "FeesWithdrawn",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "Paused",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "beneficiary",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "int64",
+						"name": "amount",
+						"type": "int64"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "vestingDuration",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "cycleDuration",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "cliffDuration",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "int64",
+						"name": "cliffAmount",
+						"type": "int64"
+					}
+				],
+				"name": "ScheduleCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					}
+				],
+				"name": "TokenAssociated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "beneficiary",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "int64",
+						"name": "amount",
+						"type": "int64"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "actor",
+						"type": "address"
+					}
+				],
+				"name": "UnclaimedAmountWithdrawn",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "Unpaused",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "beneficiary",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "int64",
+						"name": "amount",
+						"type": "int64"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "actor",
+						"type": "address"
+					}
+				],
+				"name": "VestingEnded",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "DAVINCI_ADDRESS",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "DAVINCI_TREASURY",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "MAX_FEE",
+				"outputs": [
+					{
+						"internalType": "int64",
+						"name": "",
+						"type": "int64"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					}
+				],
+				"name": "associateToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "collectedFees",
+				"outputs": [
+					{
+						"internalType": "int64",
+						"name": "",
+						"type": "int64"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "beneficiary",
+								"type": "address"
+							},
+							{
+								"internalType": "int64",
+								"name": "totalAmount",
+								"type": "int64"
+							},
+							{
+								"internalType": "int64",
+								"name": "cliffAmount",
+								"type": "int64"
+							}
+						],
+						"internalType": "struct Structs.ScheduleBeneficiary[]",
+						"name": "beneficiaries",
+						"type": "tuple[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "cycleDuration",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalCycles",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "cliffDuration",
+						"type": "uint256"
+					}
+				],
+				"name": "createSchedules",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "int64",
+						"name": "endOfExemptionTimestamp",
+						"type": "int64"
+					}
+				],
+				"name": "exemptAccount",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "exemptAccounts",
+				"outputs": [
+					{
+						"internalType": "int64",
+						"name": "",
+						"type": "int64"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "fee",
+				"outputs": [
+					{
+						"internalType": "int64",
+						"name": "",
+						"type": "int64"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getConfig",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "maxNumberOfCycles",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minCycleDuration",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxCycleDuration",
+						"type": "uint256"
+					},
+					{
+						"internalType": "int256",
+						"name": "maxCliffPercent",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "getExemptAccount",
+				"outputs": [
+					{
+						"internalType": "int64",
+						"name": "",
+						"type": "int64"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "beneficiary",
+						"type": "address"
+					}
+				],
+				"name": "getSchedule",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "int64",
+								"name": "start",
+								"type": "int64"
+							},
+							{
+								"internalType": "int64",
+								"name": "vestingDuration",
+								"type": "int64"
+							},
+							{
+								"internalType": "int64",
+								"name": "cycleDuration",
+								"type": "int64"
+							},
+							{
+								"internalType": "int64",
+								"name": "cliffDuration",
+								"type": "int64"
+							},
+							{
+								"internalType": "int64",
+								"name": "totalAmount",
+								"type": "int64"
+							},
+							{
+								"internalType": "int64",
+								"name": "cliffAmount",
+								"type": "int64"
+							},
+							{
+								"internalType": "int64",
+								"name": "claimedAmount",
+								"type": "int64"
+							}
+						],
+						"internalType": "struct Structs.Schedule",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pause",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "paused",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "revokeExemption",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "unpause",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int64",
+						"name": "_fee",
+						"type": "int64"
+					}
+				],
+				"name": "updateFee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "vestingSchedules",
+				"outputs": [
+					{
+						"internalType": "int64",
+						"name": "start",
+						"type": "int64"
+					},
+					{
+						"internalType": "int64",
+						"name": "vestingDuration",
+						"type": "int64"
+					},
+					{
+						"internalType": "int64",
+						"name": "cycleDuration",
+						"type": "int64"
+					},
+					{
+						"internalType": "int64",
+						"name": "cliffDuration",
+						"type": "int64"
+					},
+					{
+						"internalType": "int64",
+						"name": "totalAmount",
+						"type": "int64"
+					},
+					{
+						"internalType": "int64",
+						"name": "cliffAmount",
+						"type": "int64"
+					},
+					{
+						"internalType": "int64",
+						"name": "claimedAmount",
+						"type": "int64"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawFees",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "beneficiary",
+						"type": "address"
+					}
+				],
+				"name": "withdrawUnclaimedAmount",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "This contract inherits from `DavinciFeeChargable` to enable fee management and uses various libraries      for modularity and reusability.",
+			"errors": {
+				"EnforcedPause()": [
+					{
+						"details": "The operation failed because the contract is paused."
+					}
+				],
+				"ExpectedPause()": [
+					{
+						"details": "The operation failed because the contract is not paused."
+					}
+				]
+			},
+			"events": {
+				"ScheduleCreated(address,address,address,int64,uint256,uint256,uint256,int64)": {
+					"details": "This event ensures transparency in vesting operations, allowing users and developers to monitor      the creation and structure of vesting schedules.",
+					"params": {
+						"amount": "The total amount of tokens to be vested.",
+						"beneficiary": "The address of the beneficiary who will receive the vested tokens.",
+						"cliffAmount": "The amount of tokens released after the cliff period.",
+						"cliffDuration": "The duration of the initial cliff period (in seconds).",
+						"creator": "The address of the entity creating the vesting schedule.",
+						"cycleDuration": "The duration of each vesting cycle (in seconds).",
+						"token": "The address of the token involved in the vesting schedule.",
+						"vestingDuration": "The total duration of the vesting period (in seconds)."
+					}
+				},
+				"TokenAssociated(address)": {
+					"details": "This event helps track when a new token is linked with the contract, ensuring that external parties      are aware of the token's association.",
+					"params": {
+						"token": "The address of the token that has been associated."
+					}
+				},
+				"UnclaimedAmountWithdrawn(address,address,address,int64,address)": {
+					"details": "This event is essential for tracking partial releases of tokens during the vesting process,      ensuring beneficiaries and external observers can track the progress of their vesting schedules.",
+					"params": {
+						"amount": "The amount of tokens released in this specific transaction.",
+						"beneficiary": "The address of the beneficiary receiving the released tokens.",
+						"creator": "The address of the entity that created the vesting schedule.",
+						"token": "The address of the token being released."
+					}
+				},
+				"VestingEnded(address,address,address,int64,address)": {
+					"details": "This event indicates the successful conclusion of a vesting schedule, providing a clear signal that      the schedule has been fully executed.",
+					"params": {
+						"amount": "The total amount of tokens released in the final transaction, marking the end of the vesting period.",
+						"beneficiary": "The address of the beneficiary who received the vested tokens.",
+						"creator": "The address of the entity that created the vesting schedule.",
+						"token": "The address of the token involved in the vesting schedule."
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"associateToken(address)": {
+					"details": "HBAR (native token) does not require association, as it’s represented by `Zero Address`.",
+					"params": {
+						"token": "The address of the token to be associated."
+					}
+				},
+				"constructor": {
+					"params": {
+						"_fee": "The initial fee amount, denominated in tinycents."
+					}
+				},
+				"createSchedules(address,(address,int64,int64)[],uint256,uint256,uint256)": {
+					"details": "This function validates input data, stores vesting schedules, and charges a fee. The function is non-reentrant.",
+					"params": {
+						"beneficiaries": "An array of `ScheduleBeneficiary` structs specifying the beneficiaries and their allocations.",
+						"cliffDuration": "The duration of the cliff period, in seconds.",
+						"cycleDuration": "The duration of each vesting cycle, in seconds.",
+						"token": "The address of the token involved in the vesting schedule.",
+						"totalCycles": "The total number of vesting cycles."
+					}
+				},
+				"exemptAccount(address,int64)": {
+					"details": "Only callable by the contract owner. Ensures the account provided is valid (non-zero address).      If a timestamp is provided, it must be greater than the current time.      Emits an `AccountExempt` event upon successful exemption.",
+					"params": {
+						"account": "The address of the account to be exempted from paying fees.",
+						"endOfExemptionTimestamp": "The timestamp until which the account is exempt from fees.                   Use `-1` for a permanent exemption, or a future timestamp for temporary exemption."
+					}
+				},
+				"getConfig()": {
+					"details": "This function provides access to constants that define operational limits and fees.",
+					"returns": {
+						"maxCliffPercent": "The maximum allowed cliff percentage.",
+						"maxCycleDuration": "The maximum duration of a vesting cycle, in seconds.",
+						"maxNumberOfCycles": "The maximum number of allowed vesting cycles.",
+						"minCycleDuration": "The minimum duration of a vesting cycle, in seconds."
+					}
+				},
+				"getExemptAccount(address)": {
+					"details": "This is a view-only function that allows external callers to check the exemption status of an account.",
+					"params": {
+						"account": "The address of the account whose exemption status is being queried."
+					},
+					"returns": {
+						"_0": "The exemption status as an `int64` value:         - `-1`: The account is permanently exempt.         - A positive timestamp: The account is temporarily exempt until the specified time.         - `0` or absence of entry: The account is not exempt."
+					}
+				},
+				"getSchedule(address,address,address)": {
+					"details": "This function is `public` to allow users and other contracts to query vesting data.",
+					"params": {
+						"beneficiary": "The address of the beneficiary.",
+						"creator": "The address of the creator of the vesting schedule.",
+						"token": "The address of the token in the vesting schedule."
+					},
+					"returns": {
+						"_0": "The vesting schedule as a `Structs.Schedule` struct."
+					}
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"pause()": {
+					"details": "Only callable by the contract owner."
+				},
+				"paused()": {
+					"details": "Returns true if the contract is paused, and false otherwise."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+				},
+				"revokeExemption(address)": {
+					"details": "Only callable by the contract owner. Ensures the account is currently exempt (either       permanently or temporarily) before revocation. Emits an `ExemptionRevoked` event upon       successful revocation of the exemption.",
+					"params": {
+						"account": "The address of the account for which the exemption is to be revoked."
+					}
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				},
+				"unpause()": {
+					"details": "Only callable by the contract owner."
+				},
+				"updateFee(int64)": {
+					"details": "The new fee must not exceed `MAX_FEE`, ensuring user protection against excessive fees.      Emits a `FeeAmountUpdated` event upon a successful update.",
+					"params": {
+						"_fee": "The new fee amount, denominated in DAVINCI tokens."
+					}
+				},
+				"withdrawFees()": {
+					"details": "Uses the SafeHTS library for secure transfer and ensures the function is non-reentrant.      Emits a `FeesWithdrawn` event upon successful withdrawal."
+				},
+				"withdrawUnclaimedAmount(address,address,address)": {
+					"details": "This function validates the withdrawal, calculates the unclaimed amount, transfers the tokens,      updates the claimed amount, and emits an appropriate event. The function is non-reentrant.",
+					"params": {
+						"beneficiary": "The address of the account receiving the withdrawn tokens.",
+						"creator": "The address of the account that created the vesting schedule.",
+						"token": "The address of the token being withdrawn."
+					}
+				}
+			},
+			"title": "DaVinciGraphTokenVesting",
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"ScheduleCreated(address,address,address,int64,uint256,uint256,uint256,int64)": {
+					"notice": "Emitted when a new vesting schedule is added."
+				},
+				"TokenAssociated(address)": {
+					"notice": "Emitted when a token is associated with a contract."
+				},
+				"UnclaimedAmountWithdrawn(address,address,address,int64,address)": {
+					"notice": "Emitted when an amount is released to a beneficiary from a vesting schedule."
+				},
+				"VestingEnded(address,address,address,int64,address)": {
+					"notice": "Emitted when a vesting schedule is completed and no more tokens remain to be released."
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"associateToken(address)": {
+					"notice": "Allows the contract to associate a new fungible token with the locker."
+				},
+				"constructor": {
+					"notice": "Initializes the vesting contract with a specified fee structure."
+				},
+				"createSchedules(address,(address,int64,int64)[],uint256,uint256,uint256)": {
+					"notice": "Adds a new vesting schedule for one or more beneficiaries."
+				},
+				"exemptAccount(address,int64)": {
+					"notice": "Exempts an account from paying fees either temporarily or permanently."
+				},
+				"getConfig()": {
+					"notice": "Retrieves core configuration constants."
+				},
+				"getExemptAccount(address)": {
+					"notice": "Retrieves the exemption status of a specified account."
+				},
+				"getSchedule(address,address,address)": {
+					"notice": "Retrieves a specific vesting schedule."
+				},
+				"pause()": {
+					"notice": "Pauses the contract, preventing association and schedule creation operations."
+				},
+				"revokeExemption(address)": {
+					"notice": "Revokes an exemption previously granted to an account."
+				},
+				"unpause()": {
+					"notice": "Unpauses the contract, resuming association and schedule creation operations."
+				},
+				"updateFee(int64)": {
+					"notice": "Updates the fee for operations. Only callable by the contract owner."
+				},
+				"withdrawFees()": {
+					"notice": "Withdraws collected fees to the treasury address."
+				},
+				"withdrawUnclaimedAmount(address,address,address)": {
+					"notice": "Withdraws the released amount for a beneficiary from a specific vesting schedule."
+				}
+			},
+			"notice": "This contract facilitates token vesting for beneficiaries with customizable schedules. It provides         functionality to associate tokens, create vesting schedules, and withdraw released amounts.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/DaVinciGraphVesting.sol": "DaVinciGraphTokenVesting"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/DaVinciGraphVesting.sol": {
+			"keccak256": "0x296e1caa670a3023aecbcbb793fffed151f559ea3e6b88057e8422d18c78ed52",
+			"license": "MIT",
+			"urls": ["bzz-raw://4ec4747f3e32e4174dbb228b835cd6ba0301d3fc404507a297f6469ec2e8f4ea", "dweb:/ipfs/QmUrFX5sifURBHyLvRBe6pigUbgUGSUtcVagucoTPertF8"]
+		},
+		"contracts/davincigraph/DavinciFeeChargable.sol": {
+			"keccak256": "0x229a86cb5b973f2a52b6e00c4da49c230d7a5b8dc55fa4cdadf096c1fbae6681",
+			"license": "MIT",
+			"urls": ["bzz-raw://4ee4c375c4791d75ed9c11ac5ebdf81df26bfffd88af3e973f2bff9282a4ef89", "dweb:/ipfs/QmWzWgptb64abTQbh89vPXs1YSg8sxYG8YzGvkzdiYFDD3"]
+		},
+		"contracts/hedera/HederaResponseCodes.sol": {
+			"keccak256": "0x848b1272d3305123d750e5f3db3e82b68b8d28f8622b0e4c0232d88c333a3575",
+			"license": "Apache-2.0",
+			"urls": ["bzz-raw://50fdd551ef3e0920c4ffe86a91260d0c2c76b359e0a086841e5d9b3b85ee45cc", "dweb:/ipfs/QmTDHZSGC1h94rtr7cLg7YbhS2ubFGPuzK4zfEvqpKm8AG"]
+		},
+		"contracts/hedera/Helpers.sol": {
+			"keccak256": "0x3e1f9a14418bab3c1ece0ff85c503cea1b1618138f194e439bc27358cd427b10",
+			"license": "MIT",
+			"urls": ["bzz-raw://56cc0286a2a7bdea6530dafaefdde59482da353fe047a40e5709c572500661ab", "dweb:/ipfs/QmdhLH1zuaMF9wPnZfX2tD2UWQV5y6h6GqwFMDHePXJQGM"]
+		},
+		"contracts/hedera/IHederaTokenService.sol": {
+			"keccak256": "0x30245653fb9043178ac359a86f7101e9c94b509999caeaed2fed6ba09484c529",
+			"license": "Apache-2.0",
+			"urls": ["bzz-raw://b4e93d63825fa4c51ac0f036a091a048855c61bc9805db11a230bbbe95eafc18", "dweb:/ipfs/QmPRQQJNdUvMAo7yjq7XNynR6JcTLEKm3jN1LYt36DPVjp"]
+		},
+		"contracts/hedera/SafeHTS.sol": {
+			"keccak256": "0xfabbf0afde2721fbf43bf2591695f34af2f3301ec50a0ec30cbe6d87c5ca56b6",
+			"license": "Apache-2.0",
+			"urls": ["bzz-raw://5f62767a961805291b964301a16d7ffa52df8fc2b62d873c7ab310e0ccfdea07", "dweb:/ipfs/QmdRNa1fZADAaxRJvuxtMQHvNPQWk1ZGjMWVBTaqoVNFKT"]
+		},
+		"contracts/libraries/Calculate.sol": {
+			"keccak256": "0xc6cc585f2c17ff76f555911f7b4f7977089ca965e25b94e9a658ddd114c24950",
+			"license": "MIT",
+			"urls": ["bzz-raw://dc30aacf866847d8ea9647bd4a1dfd50388ca2f5716fa7906a83dc886814ef5d", "dweb:/ipfs/QmW46bLKoq8G55FqCEcMufGcqzwGrNUfCpvU2vLG4jh2Bu"]
+		},
+		"contracts/libraries/Constants.sol": {
+			"keccak256": "0xa3457322fa3c28503f97c4a8b63fcfb7fb519677b984cd2c98ad0b9fe8416485",
+			"license": "MIT",
+			"urls": ["bzz-raw://50a93c5061717ae000a59780a781d25406941abe7a855ddf985a7ebc10659ede", "dweb:/ipfs/QmZ6zaZpNweK8rf1f96tM9Pxr65Skh9himcJJ4ojE6vqcf"]
+		},
+		"contracts/libraries/SafeCast.sol": {
+			"keccak256": "0x036a9c60ff2cb622056c5e1ec28e2f2cf075dc9f0120d1322053a9cc8cba406c",
+			"license": "MIT",
+			"urls": ["bzz-raw://2aba34d8a203104c437960dd8fc4f3cabaf48134d79778252e6bb17d8a6f7a6e", "dweb:/ipfs/QmawU9jjcLJKn6FojjTckkzXKhw1HyqZ3LPeeiuSgf3Lqa"]
+		},
+		"contracts/libraries/Structs.sol": {
+			"keccak256": "0xfd56020f573937ce880b5154d47228627fcdc07b196e6e0522675e9d79782ad8",
+			"license": "MIT",
+			"urls": ["bzz-raw://17419a2f95fb84a36fa9bbe08f3efacf9353d7b3a0a95ddd58e29e301af55bbc", "dweb:/ipfs/QmPM9WXtdge3KMdcLSyiTk9jD4HJA3gdZgXEYpb6GnEJaZ"]
+		},
+		"contracts/libraries/Validate.sol": {
+			"keccak256": "0x1c0a086a003da6e48449997166c6cb59265dcf9a8f9f9757f5144fa14d8e432c",
+			"license": "MIT",
+			"urls": ["bzz-raw://edfa1ed37c30dc4894a26dc7bcc3755c4db52c2e17f8773ac3ae89df3901e688", "dweb:/ipfs/QmXKzPLcyiLuz7HqZ7x8iXzdJT7HnS68A8BCbRrYziZrXA"]
+		},
+		"contracts/openzeppelin/Ownable.sol": {
+			"keccak256": "0xf8f40d61f4667475fbc89295b9250c178b1141b66d7aebdf7cc29c92142ba90b",
+			"license": "MIT",
+			"urls": ["bzz-raw://260f7f237eab9098a281920fc02e01a699f876e5869b55879d9b8820d23bde21", "dweb:/ipfs/QmdRQWVzNysdW7Dm2Ptp5NtZ2d62v5oYsn1sMHgjPMKMFu"]
+		},
+		"contracts/openzeppelin/Pausable.sol": {
+			"keccak256": "0x0f548216357fc6f3e9273e5d68cdb030b44bceab09356e3c7dc2749400876472",
+			"license": "MIT",
+			"urls": ["bzz-raw://7a91a48ebaf5945ecdeaa7edff9ffa99d82cf4c0bc8d1a30ef59012e41b097f2", "dweb:/ipfs/QmQgWE56YKRkszvpo5fLzf6fJuZN6hXnRnU96zqwV2v37V"]
+		},
+		"contracts/openzeppelin/ReentrancyGuard.sol": {
+			"keccak256": "0x9ee6c8acf121952a41313f4867edb72c13a9870a62f1c5aed102ba43b0cc9bef",
+			"license": "MIT",
+			"urls": ["bzz-raw://aa6d5e606b8798837fcf595077c13046eaa1c0e0d2945fd73bd77d3a5f76eb96", "dweb:/ipfs/QmdBtxtTftwvw2PBLFg7qNUj5Z9rf3xneQRi2AU6NRpQUu"]
+		}
+	},
+	"version": 1
+}
